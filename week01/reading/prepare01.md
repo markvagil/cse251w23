@@ -25,7 +25,7 @@ Please carefully read the syllabus so you will know how to best allocate your ti
 
 # Preparation Material
 
-This course assumes that you have programmed in Python using classes. Please refer to [Software Requirements](../overview/software.md) for details and a review of Python.
+This course assumes that you have programmed in Python using classes. Please refer to [additional_help](../../resources/additional_help.md) for details and a review of Python.
 
 
 # Course Introduction
