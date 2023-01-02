@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 12 Teach: Finding primes using goroutines
 

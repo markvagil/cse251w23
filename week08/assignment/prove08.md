@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 08 Prove: Finding Paths in a Maze
 

@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 11 Prepare: Java Threads
 

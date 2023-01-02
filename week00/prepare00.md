@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 00 Prepare: Python Overview
 

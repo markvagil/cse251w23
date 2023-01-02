@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 07 Team: Using Multiprocessing Semaphores, Queue, and List
 

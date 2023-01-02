@@ -1,4 +1,4 @@
-![](../../site/banner.png)
+![](../../../banner.png)
 
 # 01 Prove: Creating Threads 
 

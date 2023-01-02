@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 02 Prepare: Class Threads and Communication
 
@@ -12,7 +12,7 @@
 6. Explain what a critical section of code is.
 
 
-Key Concepts in this week's reading:
+<ins>Key Concepts in this week's reading:</ins>
 1. States of a thread.
 2. What is shared between threads?
 3. How shared resources can cause problems (e.g., race conditions and deadlocks).

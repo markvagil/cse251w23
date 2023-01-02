@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 04 Teach: Feed Me Seymour!
 
@@ -8,7 +8,7 @@
 
 ## Assignment
 
-Download the file [team-feedMe.py](team-feedMe.py) to your computer. 
+Download the file [team04.py](team04.py) to your computer. 
 
 ### Instructions:
 

@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 05 Teach: Using Queues
 
@@ -20,15 +20,13 @@ The file `urls.txt` contains a list of URLs for the program `server.py`.  You wi
 
 ## Requirements
 
-1. Download [team.py](team/team.py), [server.py](team/server.py), [urls.txt](team/urls.txt) and [data.txt](team/data.txt) from Github and place them in one directory.  Make sure that you open that directory in VSCode.
+1. In a terminal (mac) or command window (windows), run the server with the command `py server.py` for Windows, `python3 server.py` for Mac.  You can check the documentation on the Star Wars assignment on how to run the server.
 
-2. In a terminal (mac) or command window (windows), run the server with the command `py server.py` for Windows, `python3 server.py` for Mac.  You can check the documentation on the Star Wars assignment on how to run the server.
+2. Start with `RETRIEVE_THREADS = 1` while implementing the threads.  Implement your program in steps - building on code that works.
 
-3. Start with `RETRIEVE_THREADS = 1` while implementing the threads.  Implement your program in steps - building on code that works.
+3. You final goal is to set `RETRIEVE_THREADS = 4` where you will create 4 `retrieve_thread()` threads.
 
-4. You final goal is to set `RETRIEVE_THREADS = 4` where you will create 4 `retrieve_thread()` threads.
-
-5. Once you have the program working with multiple threads, run the program using different `RETRIEVE_THREADS` values.  Does your program complete faster with more threads?  Is there a point where adding more threads to this program doesn't improve completion time?
+4. Once you have the program working with multiple threads, run the program using different `RETRIEVE_THREADS` values.  Does your program complete faster with more threads?  Is there a point where adding more threads to this program doesn't improve completion time?
 
 ## Sample Solution
 

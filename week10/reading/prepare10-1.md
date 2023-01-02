@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 10-1 Prepare: PThreads, MMap and Shared Memory
 

@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 08 Prepare: User/Kernel Threads and Computer Architecture
 

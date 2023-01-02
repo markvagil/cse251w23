@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 05 Prepare: Thread Synchronization: Barriers
 

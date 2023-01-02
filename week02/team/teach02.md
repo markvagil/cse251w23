@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 02 Teach : Playing Cards
 
@@ -16,7 +16,7 @@ You will be using this website to implement some Python classes to retrieve play
 
 ### Core Requirements
 
-1. Install all of the files for this team activity and run `team_get_deck_id.py` to get an ID for a deck of playing cards.  You will be using this ID in your `team.py` code.  You only need to run this program once.
+1. Install all of the files for this team activity and run `team_get_deck_id.py` to get an ID for a deck of playing cards.  You will be using this ID in your `team02.py` code.  You only need to run this program once.
 2. Implement the `Request_thread` class where it can be created with a URL and it will return the results. (See example in the reading requirements for this week's lesson)
 3. Implement the `Deck` class methods.  Make sure that the code in `main()` can run and display card values.
 
@@ -33,5 +33,5 @@ When your program is finished, please view the sample solution for this program 
 
 You should work to complete this team activity for the one hour period first, without looking at the sample solution. However, if you have worked on it for at least an hour and are still having problems, you may feel free to use the sample solution to help you finish your program.
 
-- Sample solution (Core requirements): [Solution](team/team_solution.py)
+- Sample solution (Core requirements): [Solution](team02_solution.py)
 

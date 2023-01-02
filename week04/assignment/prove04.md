@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 04 Prove: Factory and Dealership
 
@@ -24,7 +24,7 @@ The Python file contains the following classes:
 
 ## Instructions
 
-- Download the [assignment.py](assignment/assignment.py) file.
+- Download the [assignment04.py](assignment04.py) file.
 - Implement your code where the TODO comments are found.
 - No global variables, all data must be passed to the objects.
 - You are not allowed to use the normal Python Queue class.  You must use QueueTwoFiftyOne. This shared queue holds the Car objects and can not be greater than MAX_QUEUE_SIZE while your program is running.
@@ -33,7 +33,7 @@ The Python file contains the following classes:
 
 ### Plot created by your program.  
 
-**Before** the Dealership takes a car from the queue, it uses `size()` to get the size of the queue and updates the `queue_stats` list.  Here is an example of a plot (Your plot might/will look different).  Each bar represents the size of the queue while the program is running.  From this plot, the program had a full queue of size 10 during most of the execution time.
+**Before** the Dealership takes a car from the queue, it uses `size()` to get the size of the queue and updates the `queue_stats` list.  Here is an example of a plot (Your plot might/will look different).  Each bar represents the size of the queue while the program is running. 
 
 ![](plot.png)
 

@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 # 06 Prepare: Processes and Analyzing Programs
 

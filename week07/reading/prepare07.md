@@ -1,4 +1,4 @@
-![](../site/banner.png)
+![](../../banner.png)
 
 
 # 07 Prepare: Process Communication and Barriers
