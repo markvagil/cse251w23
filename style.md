@@ -1,6 +1,6 @@
 # Style
 
-> “Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler
+> <font size="6">“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.” – Martin Fowler</font>
 
 
 Style is subjective and is more art than science. The goal of my style rules is to make your code look more professional.
