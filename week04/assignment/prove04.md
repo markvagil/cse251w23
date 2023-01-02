@@ -43,7 +43,7 @@ The Python file contains the following classes:
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 Semaphore used to control queue size | 15 | 10 | 5 | 0
 Semaphore used to control reading empty queue | 15 | 10 | 5 | 0
 Queue size not used in IF statement | 5 | 5 | 5 | 0

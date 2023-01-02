@@ -95,7 +95,7 @@ Room was cleaned 32 times, there were 20 parties
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors (including deadlocks) | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 Locks used to control entrance to room | 20 | 10 | 5 | 0
 Lists used to count number of room cleanings and parties | 15 | 10 | 5 | 0
 Cleanings and parties don't occur at the same time | 15 | 10 | 5 | 0

@@ -81,7 +81,7 @@ While running, the server will display requests and replies from your assignment
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors (including deadlocks) | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 0 | 0 | 0
+[Style](../../style.md) | 10 | 0 | 0 | 0
 All calls to server are in a new thread | 10 | 0 | 0 | 0
 Number of people and families matches the server | 10 | 0 | 0 | 0
 Runs in under 10 seconds | 10 | 0 | 0 | 0
@@ -90,7 +90,7 @@ Runs in under 10 seconds | 10 | 0 | 0 | 0
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors (including deadlocks) | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 0 | 0 | 0
+[Style](../../style.md) | 10 | 0 | 0 | 0
 All calls to server are in a new thread | 10 | 0 | 0 | 0
 Number of people and families matches the server | 10 | 0 | 0 | 0
 Runs in under 10 seconds | 10 | 0 | 0 | 0

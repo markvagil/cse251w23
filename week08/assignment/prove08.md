@@ -162,7 +162,7 @@ pip install opencv-python
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 7 | 3 | 0
+[Style](../../style.md) | 10 | 7 | 3 | 0
 Recursion used to find solution path | 10 | 0 | 0 | 0
 Incorrect paths recolored correctly | 10 | 7 | 3 | 0
 Correctly finds end position | 5 | 0 | 0 | 0
@@ -172,7 +172,7 @@ Correctly finds end position | 5 | 0 | 0 | 0
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 7 | 3 | 0
+[Style](../../style.md) | 10 | 7 | 3 | 0
 Recursion used to find solution path | 10 | 0 | 0 | 0
 Threads used to explore change in path (with own color) | 10 | 7 | 3 | 0
 Correctly finds end position | 5 | 0 | 0 | 0

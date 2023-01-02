@@ -55,7 +55,7 @@ Finished processes 4034 tasks = 20.497827291488647
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 One pool per task category used | 10 | 0 | 0 | 0
 Selection of pool size demonstrates understanding of IO Bound vs CPU Bound tasks | 20 | 10 | 5 | 0
 Callback lists contain correct number of items | 15 | 10 | 5 | 0

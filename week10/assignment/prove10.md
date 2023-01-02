@@ -29,7 +29,7 @@ The file used for this assignment is [assignment10.py](assignment10.py)
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 Program not hard coded to 5 philosophers | 10 | 0 | 0 | 0
 Waiter class used to control forks | 15 | 0 | 0 | 0
 Program is concurrent (philosophers take turns) | 30 | 20 | 10 | 0

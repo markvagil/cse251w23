@@ -83,7 +83,7 @@ Created - 11:51:15.030378: Large marble: Sure Shot, marbles: Tuscan Brown, Neon 
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 Pipes used correctly | 20 | 15 | 10 | 0
 Settings read in and used correctly | 15 | 10 | 5 | 0
 Correctly filled in output file produced | 20 | 15 | 10 | 0

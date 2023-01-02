@@ -71,7 +71,7 @@ Performance: 11.44 viruses/sec
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors (including deadlocks) | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 5 | 0 | 0
+[Style](../../style.md) | 10 | 5 | 0 | 0
 All calls to server are in a new thread | 20 | 0 | 0 | 0
 Correct number of viruses and families found for 6 generations | 10 | 5 | 0 | 0
 
@@ -79,7 +79,7 @@ Correct number of viruses and families found for 6 generations | 10 | 5 | 0 | 0
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors (including deadlocks) | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 10 | 5 | 0 | 0
+[Style](../../style.md) | 10 | 5 | 0 | 0
 All calls to server are in a new thread | 20 | 0 | 0 | 0
 Correct number of viruses and families found for 6 generations | 10 | 5 | 0 | 0
 

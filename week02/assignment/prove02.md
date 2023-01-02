@@ -15,7 +15,7 @@ See the list of requirements and psuedocode in [assignment02](assignment02.py).
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 20 | 15 | 10 | 0
+[Style](../../style.md)* | 20 | 15 | 10 | 0
 Uses a variable amount of threads | 20 | 15 | 10 | 0
 Fairly divides up the numbers among the threads | 20 | 15 | 10 | 0
 Asserts pass | 10 | 7 | 3 | 0

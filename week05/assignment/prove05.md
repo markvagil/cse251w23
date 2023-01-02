@@ -76,7 +76,7 @@ Dealer Stats        : [246, 244, 245, 242, 248, 246, 244, 244, 240, 250]
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md) | 15 | 10 | 5 | 0
+[Style](../../style.md) | 15 | 10 | 5 | 0
 Semaphore used to control queue size | 10 | 7 | 3 | 0
 Semaphore used to control reading empty queue | 10 | 7 | 3 | 0
 Queue size not used in IF statement | 5 | 5 | 5 | 0

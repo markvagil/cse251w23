@@ -17,7 +17,7 @@ Read the `assignment01_a.py` and `assignment01-b.py` from the `week01/assignment
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 10 | 7 | 3 | 0
+[Style](../../style.md)* | 10 | 7 | 3 | 0
 Creates a new thread | 5 | 0 | 0 | 0
 Starts thread (does not call run) | 5 | 0 | 0 | 0
 Joins threads | 5 | 0 | 0 | 0
@@ -29,7 +29,7 @@ Asserts pass | 10 | 7 | 3 | 0
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 10 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 10 | 7 | 3 | 0
+[Style](../../style.md)* | 10 | 7 | 3 | 0
 Class extends threading.Thread | 5 | 0 | 0 | 0
 Calls super constructor | 5 | 0 | 0 | 0
 Constructor takes the number to sum | 5 | 0 | 0 | 0

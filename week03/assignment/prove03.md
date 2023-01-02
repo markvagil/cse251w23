@@ -107,7 +107,7 @@ Here is the URL for person id = 1: http://127.0.0.1:8790/people/1
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
 Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 15 | 10 | 5 | 0
+[Style](../../style.md)* | 15 | 10 | 5 | 0
 Loops over returned URLs returned to make new threads/calls | 20 | 15 | 10 | 0
 Makes correct number of calls to server (passes Assert) | 20 | 0 | 0 | 0
 Finishes under required time limit (or justification provided) | 15 | 0 | 0 | 0
