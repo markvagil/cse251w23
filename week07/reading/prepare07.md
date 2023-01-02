@@ -4,7 +4,7 @@
 # 07 Prepare: Process Communication and Barriers
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Explain the difference between a process and a thread.
 2. Explain the relationship between a GIL and a process (in Python). 
 3. Know when to use a thread versus a process.

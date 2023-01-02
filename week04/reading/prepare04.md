@@ -3,7 +3,7 @@
 # 04 Prepare: Queues and Semaphores
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Understand what a lock is and how to use it.
 2. Understand what a race condition is and how to avoid it.
 3. How to use a list as a counter.

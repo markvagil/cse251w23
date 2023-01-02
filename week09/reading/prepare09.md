@@ -3,7 +3,7 @@
 # 09 Prepare: Asynchronous Processes
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Explain what a user and kernel threads are.
 2. Explain some basic computer components.
 3. Explain in detail what recursion is and can provide a step-by-step explanation of some simple recursive programs (make sure you followed the provide links and spent time writing some recursive programs).

@@ -3,7 +3,7 @@
 # 03 Prepare: Locks
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Understand that threads have states and what some of the states are.
 2. Basic understanding of what is shared between threads.
 3. What kind of issues can happen if resources are shared between threads.

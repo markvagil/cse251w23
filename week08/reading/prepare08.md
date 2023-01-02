@@ -3,7 +3,7 @@
 # 08 Prepare: User/Kernel Threads and Computer Architecture
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Explain the challenges of sharing data between processes.
 2. Explain what a multiprocessing queue is and how to use to share data between two or more processes.
 3. Explain what a multiprocessing pipe is and how to use to share data between two processes.

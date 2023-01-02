@@ -3,7 +3,7 @@
 # 13-1 Prepare: Process Scheduling
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Familiarity with creating threads in Go.
 
 <ins>Key Concepts in this week's reading:</ins>

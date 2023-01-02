@@ -3,7 +3,7 @@
 # 02 Prepare: Class Threads and Communication
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. You can create a thread using the threading module.
 2. You can create a thread using inheritance.
 3. Explain why the GIL prevents threads from running in parallel (in Python).

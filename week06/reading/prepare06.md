@@ -3,7 +3,7 @@
 # 06 Prepare: Processes and Analyzing Programs
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Understand what thread synchronization is.
 2. Understand what a barrier is.
 3. Understand when to use a barrier.

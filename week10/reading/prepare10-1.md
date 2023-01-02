@@ -3,7 +3,7 @@
 # 10-1 Prepare: PThreads, MMap and Shared Memory
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Explain the difference between asynchronous and synchronous operations.
 2. Explain the difference between parallel and concurrent tasks.
 3. Understand how to use the apply_async function of process pools.

@@ -3,7 +3,7 @@
 # 05 Prepare: Thread Synchronization: Barriers
 
 **Things you should know or know how to do that you learned from last week**
-(if not, then please ask on Monday---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
+(if not, then please ask---see [Matthew 7:7-8](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng))
 1. Explain what a queue is and how to use it.
 2. Explain what a sentinel is and now to use it.
 3. Explain what a semaphore is and how to use it.
