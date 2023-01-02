@@ -16,25 +16,25 @@ Read the `assignment01_a.py` and `assignment01-b.py` from the `week01/assignment
 **Rubric for Assignment01-a.py**
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
-Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 20 | 15 | 10 | 0
-Creates a new thread | 10 | 0 | 0 | 0
-Starts thread (does not call run) | 10 | 0 | 0 | 0
-Joins threads | 10 | 0 | 0 | 0
-Sets global SUM in sum function | 10 | 0 | 0 | 0
-Asserts pass | 20 | 15 | 10 | 0
+Runs without errors | 10 | 0 | 0 | 0
+[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 10 | 7 | 3 | 0
+Creates a new thread | 5 | 0 | 0 | 0
+Starts thread (does not call run) | 5 | 0 | 0 | 0
+Joins threads | 5 | 0 | 0 | 0
+Sets global SUM in sum function | 5 | 0 | 0 | 0
+Asserts pass | 10 | 7 | 3 | 0
 
 
 **Rubric for Assignment01-b.py**
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
-Runs without errors | 20 | 0 | 0 | 0
-[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 20 | 15 | 10 | 0
-Class extends threading.Thread | 10 | 0 | 0 | 0
-Calls super constructor | 10 | 0 | 0 | 0
-Constructor takes the number to sum | 10 | 0 | 0 | 0
-Constructor creates class sum variable | 10 | 0 | 0 | 0
-Asserts pass | 20 | 15 | 10 | 0
+Runs without errors | 10 | 0 | 0 | 0
+[Style](https://github.com/brandonfoushee/cse251working/blob/master/style.md)* | 10 | 7 | 3 | 0
+Class extends threading.Thread | 5 | 0 | 0 | 0
+Calls super constructor | 5 | 0 | 0 | 0
+Constructor takes the number to sum | 5 | 0 | 0 | 0
+Constructor creates class sum variable | 5 | 0 | 0 | 0
+Asserts pass | 10 | 7 | 3 | 0
 
 *For the first few assignments, more feedback will be given on style issues, rather than point deductions, to help you figure out the expectations.
 
