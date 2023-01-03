@@ -3,6 +3,7 @@
 - [ ] [Install Visual Studio Code IDE](#install-vscode)
 - [ ] [Install Python](#install-python)
 - [ ] [Install Python Modules](#install-modules)
+- [ ] [Install Git](#install-git)
 
 ## <a name="install-vscode">Install Visual Studio Code IDE
 There are a number of IDEs [Integrated Development Environments](https://en.wikipedia.org/wiki/Integrated_development_environment) available to programmers. You are free to use any editor that you want.  However, the course will use Visual Studio Code as the editor in video examples and during class time.  VSCode can be downloaded at [VSCode](https://code.visualstudio.com).
@@ -48,7 +49,7 @@ Mac --> https://phoenixnap.com/kb/install-pip-mac
 
 ### Install necessary modules using pip
 From a terminal inside of VS Code, type:
->pip install [name of the module shown below]
+>pip install \<name of the module shown below\>
 
 The following modules/packages need to be installed for use in our CSE251 class:
 1. requests 
@@ -56,3 +57,19 @@ The following modules/packages need to be installed for use in our CSE251 class:
 3. matplotlib
 4. Pillow
 5. opencv-python
+
+## <a name="install-git"></a> **Install Git**
+Git comes preinstalled with your VS Code. You only need to clone our class repo. If you are reading this page in a browser, then you are inside of the the class repo. To clone it, go to the top most directory of the repo. The name of the repo changes each semester, but follows the pattern of "https://github.com/brandonfoushee/cse251\<semesterYY\>" where semester is 's', 'f', 'w' (for spring, fall, winter) and YY is the last two digits of the year.
+
+So if this semester was Winter 2023, then the repo name would be https://github.com/brandonfoushee/cse251w23. You can always see the directory structure using the breadcrumb at the top in GitHub:
+
+![](breadcrumb.PNG)
+
+Click on the repo name in the breadcrumb and then click the "Code" button to get a copy of the repo path, use the HTTPS link.
+
+You would then open a terminal in VS Code (using cd, navigate to where you want to clone the repo) and type:
+git clone https://github.com/brandonfoushee/cse251w23.git  (or paste in the link that you copied)
+
+This will create a cse251w23 (or whatever the semester and year is) directory in the directory in which you are in. 
+
+Now you have all the files for the class.

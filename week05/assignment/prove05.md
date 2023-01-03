@@ -1,6 +1,6 @@
 ![](../../banner.png)
 
-# 06 Prove: Factories and Dealerships
+# 06 Prove: Factories and Dealerships Part 2
 
 ## Overview
 
