@@ -101,7 +101,5 @@ Assignments are individual and not team based.  Any assignments found to be  pla
 
 ## Submission
 
-- Add comments in the `functions.py` Python file in the header section describing how you sped up the program.
-- You must clearly show in your code that you are using DFS and BFS algorithms.
-- Upload only that Python file to I-Learn.
+- Upload your modified `functions.py` file as well as the two log files (`assignment.log` and `server.log`). No zip files please.
 
