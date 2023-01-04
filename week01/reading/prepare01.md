@@ -80,11 +80,11 @@ Quote from https://rednafi.github.io/digressions/python/2020/04/21/python-concur
 
 > In Python, if the task at hand is I/O bound, you can use use standard library’s `threading` module or if the task is CPU bound then `multiprocessing` module can be your friend. These `threading` and `multiprocessing` APIs give you a lot of control and flexibility but they come at the cost of having to write relatively low-level verbose code that adds extra layers of complexity on top of your core logic. Sometimes when the target task is complicated, it’s often impossible to avoid complexity while adding concurrency. However, a lot of simpler tasks can be made concurrent without adding too much extra overhead.
 
-We will be focusing on the threading module for the first 2 weeks of the course. Then, multi-processes for the next 3 weeks.
+We will be focusing on the threading module for the first few weeks of the course. Then, multi-processes for the next few weeks.
 
 ## Threading Package
 
-For the first two weeks of the course, we are learning how to add threads to our programs.  We will be using the threading package.  It is included in your Python program using the following:
+For the first few weeks of the course, we are learning how to add threads to our programs.  We will be using the threading package.  It is included in your Python program using the following:
 
 ```python
 import threading
@@ -201,7 +201,7 @@ if __name__ == "__main__":
     main()
 ```
 
-When writting multi-processor programs that have multiple files, you must test for `if __name_ == "__main__":` or else Python will start running your program from different files as each process is created.
+When writing multi-processor programs that have multiple files, you must test for `if __name_ == "__main__":` or else Python will start running your program from different files as each process is created.
 
 Note: the function `dir()` can display the current builtin functions in your program.
 
