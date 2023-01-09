@@ -4,7 +4,7 @@ Requirements
    between 10,000,000,000 and 10,000,110,003.
 2. The program should be able to use a variable amount of threads.
 3. Each thread should look over an approximately equal number of numbers.
-   This means that you need to divise an algorithm that can divide up the
+   This means that you need to devise an algorithm that can divide up the
    110,003 numbers "fairly" based on a variable number of threads. 
    
 Psuedocode: 
