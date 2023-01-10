@@ -48,6 +48,8 @@ prime_count = 0
 # Global count of the numbers examined
 numbers_processed = 0
 
+NUMBER_THREADS = 10
+
 
 def is_prime(n: int):
     """
