@@ -24,7 +24,7 @@ You will be using this website to implement some Python classes to retrieve play
 ### Stretch Challenge
 
 1. Talk with your team if a `Card` class needs to be created for your game.  What are the pros and cons?
-2. Question: Would the class `Deck` be faster if you retrieved all of the cards for the deck when you reshuffle instead of making an API call for draw every card?  If you have the time, implement this feature.
+2. Question: Would the class `Deck` be faster if you retrieved all of the cards for the deck when you reshuffle instead of making an API call to draw every card?  If you have the time, implement this feature.
 3. Question: Why do you think that it's important to have the `Request_thread` class?  Why not just make the API calls in `Deck` directly?
 
 ## Sample Solution

@@ -4,7 +4,7 @@ Requirements
    provided to you. It will return data about the Star Wars movies.
 2. You will make 94 calls to the web server, using 94 threads to get the data.
 3. Using a new thread each time, obtain a list of the characters, planets, 
-   starships, vehicles, and species of the sixth Star War movie.
+   starships, vehicles, and species of the sixth Star Wars movie.
 3. Use the provided print_film_details function to print out the data 
    (should look exactly like the "sample_output.txt file).
    
@@ -43,7 +43,6 @@ def print_film_details(film, chars, planets, starships, vehicles, species):
         print(f'{title}: {len(name_list)}')
         names = sorted([item["name"] for item in name_list])
         print(str(names)[1:-1].replace("'", ""))
-
 
     print('-' * 40)
     print(f'Title   : {film["title"]}')

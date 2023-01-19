@@ -1,7 +1,7 @@
 import threading
 '''
-Requirements:
-1. Create a class that extends the 'threading.Thread' class (see https://stackoverflow.com/questions/15526858/how-to-extend-a-class-in-python). This means that the class IS a thread. 
+Requirements:Create a class that extends the 'threading.Thread'
+1.  class (see https://stackoverflow.com/questions/15526858/how-to-extend-a-class-in-python). This means that the class IS a thread. 
    Any objects instantiated using this class ARE threads.
 2. Instantiate this thread class that computes the sum of all numbers 
    between one and that number (exclusive)
@@ -32,19 +32,42 @@ d. How do you get the value an object's attribute (see https://datagy.io/python-
 # DO NOT USE GLOBALS #
 ######################
 
-# TODO - Create a thread class
+class SummingNumbers(threading.Thread):
+    '''Sums numbers'''
+    def __init__(self, number):
+        threading.Thread.__init__(self)
+        self.sum = 0
+        self.number = number
 
+    def run(self):
+        for x in range(self.number):
+            self.sum = self.sum + x
+            #print(f'{self.sum=}')
+            
 def main():
+    
+    t1 = SummingNumbers(10)
+    t2 = SummingNumbers(13)
+    t3 = SummingNumbers(17)
+    
+    t1.start()
+    t2.start()
+    t3.start()
+    
+    t1.join()
+    t2.join()
+    t3.join()
+    
     # Instantiate your thread class and pass in 10.
     # Test (assert) if its sum attribute is equal to 45.
     # Note: do no use 'yourThread' for the name of your thread object
-    assert yourThread.sum == 45, f'The sum should equal 45 but instead was {yourThread.sum}'
+    assert t1.sum == 45, f'The sum should equal 45 but instead was {t1.sum}'
     
     # Repeat, passing in 13
-    assert yourThread.sum == 78, f'The sum should equal 78 but instead was {yourThread.sum}'
+    assert t2.sum == 78, f'The sum should equal 78 but instead was {t2.sum}'
     
     # Repeat, passing in 17
-    assert yourThread.sum == 136, f'The sum should equal 136 but instead was {yourThread.sum}'
+    assert t3.sum == 136, f'The sum should equal 136 but instead was {t3.sum}'
 
 if __name__ == '__main__':
     main()

@@ -11,19 +11,20 @@ def increase(number: int, lock: threading.Lock):
     local_counter = global_counter
     #print(f'BEFORE memory address of local_counter = {id(local_counter)}')
     
-    lock.acquire()
-    local_counter += number
-    
-    # this represents a function doing some work/task
-    time.sleep(random.uniform(0.1, 1))
-    
-    print(f'{threading.current_thread().name}: local_counter = {local_counter}\n', end="")
-    
-    #print(f'AFTER memory address of counter =       {id(global_counter)}')
-    #print(f'AFTER memory address of local_counter = {id(local_counter)}')
-    
-    global_counter = local_counter
-    print(f'{threading.current_thread().name}: global_counter = {global_counter}\n', end="")
+    with lock:
+        local_counter += number
+        
+        # this represents a function doing some work/task
+        time.sleep(random.uniform(0.1, 1))
+        
+        print(f'{threading.current_thread().name}: local_counter = {local_counter}\n', end="")
+        
+        #print(f'AFTER memory address of counter =       {id(global_counter)}')
+        #print(f'AFTER memory address of local_counter = {id(local_counter)}')
+        
+        global_counter = local_counter
+        print(f'{threading.current_thread().name}: global_counter = {global_counter}\n', end="")
+        
     
     # Not releasing causes a deadlock since one of the threads is blocked on trying to 
     # acquire the lock that never gets released.

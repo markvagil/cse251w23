@@ -15,7 +15,7 @@ Psuedocode:
 4. Determine an algorithm to partition the 110,003 numbers based on 
     the number of threads. Each thread should have approx. the same amount
     of numbers to examine. For example, if the number of threads is
-    5, then the first 4 threads will examine 22,003 numbers, and the
+    5, then the first 4 threads will examine 22,000 numbers, and the
     last thread will examine 22,003 numbers. Determine the start and
     end values of each partition.
 5. Use these start and end values as arguments to a function.
@@ -49,7 +49,6 @@ prime_count = 0
 numbers_processed = 0
 
 NUMBER_THREADS = 10
-
 
 def is_prime(n: int):
     """
