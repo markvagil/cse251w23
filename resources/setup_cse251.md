@@ -49,7 +49,7 @@ Mac --> https://phoenixnap.com/kb/install-pip-mac
 
 ### Install necessary modules using pip
 From a terminal inside of VS Code, type:
->pip install \<name of the module shown below\>
+>py -m pip install \<name of the module shown below\>
 
 The following modules/packages need to be installed for use in our CSE251 class:
 1. requests 
