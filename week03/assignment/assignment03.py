@@ -69,8 +69,8 @@ def main():
     # to see the json/dictionary). Note that these categories are for
     # all the Star Wars movies.
 
-    # TODO Retrieve details on film 6 by putting a '6' at the end of the film URL.
-    # For example, http://127.0.0.1:8790/film/6 gives you all the details of 
+    # TODO Retrieve details on film 6 by putting a '6' at the end of the films URL.
+    # For example, http://127.0.0.1:8790/films/6 gives you all the details of 
     # the sixth movie.
     
     # Iterate over each of the keys in the sixth film details and get the data
