@@ -28,4 +28,4 @@ Work on this for the remaining class time. If you can't complete it by the end o
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided.

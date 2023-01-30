@@ -15,5 +15,5 @@ The code found in `team08.py` contains a working merge function that sorts 1,000
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided. 
 

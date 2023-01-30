@@ -30,5 +30,5 @@ The file `urls.txt` contains a list of URLs for the program `server.py`.  You wi
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided.
 

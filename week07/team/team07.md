@@ -37,6 +37,6 @@ The following graph outlines the processes and data structures that you will nee
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided.
 
 

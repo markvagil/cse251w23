@@ -94,4 +94,4 @@ On my computer, I have 8 CPU cores.  The const variable `CPU_COUNT` is set to 4 
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided. 

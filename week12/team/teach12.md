@@ -120,4 +120,4 @@ All Done!
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided. 

@@ -17,6 +17,6 @@ You will be using the process pool apply_async() function to change your assignm
 
 ## Sample Solution
 
-No solution provided, but a sample solution will be posted on Friday.
+No solution provided.
 
 

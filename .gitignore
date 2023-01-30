@@ -1,3 +1,4 @@
 **/code*.py
 .vscode/settings.json
 **/attendance.png
+**/__pycache__

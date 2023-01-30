@@ -48,4 +48,4 @@ Total drawing time = 0.32776570
 
 ## Sample Solution
 
-No solution provided. A sample solution will be posted on Friday.
+No solution provided. 
