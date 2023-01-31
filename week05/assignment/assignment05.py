@@ -153,7 +153,7 @@ def main():
     # Use 1, 1 to get your code working like the previous assignment, then
     # try adding in different run amounts. You should be able to run the
     # full 7 run amounts.
-    # runs = [(1, 1)]
+    #runs = [(1, 1)]
     runs = [(1, 1), (1, 2), (2, 1), (2, 2), (2, 5), (5, 2), (10, 10)]
     for manufacturers, dealerships in runs:
         run_time, max_queue_size, dealer_stats, manufacturer_stats = run_production(
