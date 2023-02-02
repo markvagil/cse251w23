@@ -51,6 +51,12 @@ numbers_processed = 0
 # Global variables for the start of the range and the end of the range.
 start_range = 10_000_000_000
 end_range = 10_000_110_003
+<<<<<<< Updated upstream
+=======
+
+# Global constant for number of threads.
+NUMBER_THREADS = 10
+>>>>>>> Stashed changes
 
 # Global constant for number of threads.
 NUMBER_THREADS = 10

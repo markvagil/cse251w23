@@ -38,6 +38,7 @@ def threaded_sum(num=int):
     for number in range(1, num, 1):
         sum += number
 
+<<<<<<< Updated upstream
 
 
 def summing(index, number, results):
@@ -93,6 +94,25 @@ def main():
     # Summation up to 10, using the first thread.
     assert sum == 45, f'The sum should equal 45 but instead was {sum}'
 
+=======
+
+def main():
+
+    # Creating our threads directly through the thread class.
+    t1 = threading.Thread(target=threaded_sum, args=(10,))
+    t2 = threading.Thread(target=threaded_sum, args=(13,))
+    t3 = threading.Thread(target=threaded_sum, args=(17,))
+
+    # For each thread, the sum is reset to 0, the thread is started and joined (finished),
+    # and we assert the value is correct.
+    global sum
+    sum = 0
+    t1.start()
+    t1.join()
+    # Summation up to 10, using the first thread.
+    assert sum == 45, f'The sum should equal 45 but instead was {sum}'
+
+>>>>>>> Stashed changes
     sum = 0
     t2.start()
     t2.join()
