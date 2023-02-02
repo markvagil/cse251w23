@@ -4,7 +4,7 @@ Requirements:
    one and that number (exclusive). This will be the target of your thread.
 2. Create a thread to run this function.
 3. Assert that your sums are correct for the given number.
-   
+
 Psuedocode:
 1. Create either a global SUM or create a list object in main.
 2a. If using a global, then inside of your function, set the global equal to the sum.
@@ -17,7 +17,7 @@ Psuedocode:
 Things to consider:
 a. If using a global, what is the correct syntax for creating a thread with one argument?
    (see https://stackoverflow.com/questions/3221655/python-threading-string-arguments)
-b. How do you start a thread? (see this week's reading) 
+b. How do you start a thread? (see this week's reading)
 c. How will you wait until the thread is done? (see this week's reading)
 d. Do threads (including the main thread) share global variables? (see https://superfastpython.com/thread-share-variables/)
 e. If you use a global, how will you ensure that one thread doesn't change the value of
@@ -28,8 +28,16 @@ g. If using a list object, how to you instantiate it with the correct number of 
 '''
 import threading
 
-# global sum
-SUM = 0
+# Global sum variable.
+sum = 0
+
+
+# Function for calculating the summation up to an inputted number that is used in our threads.
+def threaded_sum(num=int):
+    global sum
+    for number in range(1, num, 1):
+        sum += number
+
 
 
 def summing(index, number, results):
@@ -41,6 +49,7 @@ def summing(index, number, results):
 
 
 def main():
+<<<<<<< Updated upstream
 
     # If not using a global, use this list to store your results
     results = [0] * 3
@@ -67,7 +76,39 @@ def main():
     assert results[1] == 78, f'The sum should equal 78 but instead was {results[1]}'
     assert results[2] == 136, f'The sum should equal 136 but instead was {results[2]}'
 
+=======
+>>>>>>> Stashed changes
 
+    # Creating our threads directly through the thread class.
+    t1 = threading.Thread(target=threaded_sum, args=(10,))
+    t2 = threading.Thread(target=threaded_sum, args=(13,))
+    t3 = threading.Thread(target=threaded_sum, args=(17,))
+
+    # For each thread, the sum is reset to 0, the thread is started and joined (finished),
+    # and we assert the value is correct.
+    global sum
+    sum = 0
+    t1.start()
+    t1.join()
+    # Summation up to 10, using the first thread.
+    assert sum == 45, f'The sum should equal 45 but instead was {sum}'
+
+    sum = 0
+    t2.start()
+    t2.join()
+    # Summation up to 13, using the second thread.
+    assert sum == 78, f'The sum should equal 78 but instead was {sum}'
+
+    sum = 0
+    t3.start()
+    t3.join()
+    # Summation up to 17, using the third thread.
+    assert sum == 136, f'The sum should equal 136 but instead was {sum}'
+
+
+# Main function.
 if __name__ == '__main__':
     main()
     print("DONE")
+
+# Assignment completed by Mark Vagil.

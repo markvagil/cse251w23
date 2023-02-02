@@ -53,7 +53,8 @@ start_range = 10_000_000_000
 end_range = 10_000_110_003
 
 # Global constant for number of threads.
-NUMBER_THREADS = 10
+NUMBER_THREADS = 17
+
 
 def is_prime(n: int):
     """
