@@ -38,8 +38,6 @@ def threaded_sum(num=int):
     for number in range(1, num, 1):
         sum += number
 
-<<<<<<< Updated upstream
-
 
 def summing(index, number, results):
     sum = 0
@@ -50,7 +48,6 @@ def summing(index, number, results):
 
 
 def main():
-<<<<<<< Updated upstream
 
     # If not using a global, use this list to store your results
     results = [0] * 3
@@ -59,26 +56,23 @@ def main():
     threads.append(threading.Thread(target=summing, args=(0, 10, results)))
     threads.append(threading.Thread(target=summing, args=(1, 13, results)))
     threads.append(threading.Thread(target=summing, args=(2, 17, results)))
-    
+
     for t in threads:
         t.start()
-        
+
     for t in threads:
         t.join()
 
     # If using a global, place these asserts after the call to your summing function
     # to check that your code is working correctly
-    #assert SUM == 45, f'The sum should equal 45 but instead was {SUM}'
-    #assert SUM == 78, f'The sum should equal 78 but instead was {SUM}'
-    #assert SUM == 136, f'The sum should equal 136 but instead was {SUM}'
+    # assert SUM == 45, f'The sum should equal 45 but instead was {SUM}'
+    # assert SUM == 78, f'The sum should equal 78 but instead was {SUM}'
+    # assert SUM == 136, f'The sum should equal 136 but instead was {SUM}'
     # If using a list object, place these asserts after the call to your summing function
     # to check that your code is working correctly
     assert results[0] == 45, f'The sum should equal 45 but instead was {results[0]}'
     assert results[1] == 78, f'The sum should equal 78 but instead was {results[1]}'
     assert results[2] == 136, f'The sum should equal 136 but instead was {results[2]}'
-
-=======
->>>>>>> Stashed changes
 
     # Creating our threads directly through the thread class.
     t1 = threading.Thread(target=threaded_sum, args=(10,))
@@ -94,7 +88,6 @@ def main():
     # Summation up to 10, using the first thread.
     assert sum == 45, f'The sum should equal 45 but instead was {sum}'
 
-=======
 
 def main():
 
@@ -112,7 +105,6 @@ def main():
     # Summation up to 10, using the first thread.
     assert sum == 45, f'The sum should equal 45 but instead was {sum}'
 
->>>>>>> Stashed changes
     sum = 0
     t2.start()
     t2.join()

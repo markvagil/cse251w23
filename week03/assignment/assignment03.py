@@ -83,8 +83,6 @@ def main():
     # Start a timer
     begin_time = time.perf_counter()
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     # TODO Using your thread class, retrieve TOP_API_URL to get
     # the list of the urls for each of the categories in the form
     # of a dictionary (open your browser and go to http://127.0.0.1:8790
@@ -92,19 +90,17 @@ def main():
     # all the Star Wars movies.
 
     # TODO Retrieve details on film 6 by putting a '6' at the end of the films URL.
-    # For example, http://127.0.0.1:8790/films/6 gives you all the details of 
+    # For example, http://127.0.0.1:8790/films/6 gives you all the details of
     # the sixth movie.
-    
+
     # Iterate over each of the keys in the sixth film details and get the data
     # for each of the categories (might want to create function to do this)
 
     # TODO Call the display function
-=======
+
     print('Starting to retrieve data from the server')
->>>>>>> Stashed changes
-=======
+
     print('Starting to retrieve data from the server')
->>>>>>> Stashed changes
 
     # First thread call to the server, getting inital data on lower URLs.
     t1 = threads(TOP_API_URL)
