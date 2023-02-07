@@ -17,6 +17,9 @@ Questions:
 3. Would threads work on this assignment? Why or why not? (guess if you need to) 
    >
    >
+4. When you run "create_final_video.py", does it produce a video with the elephants
+   inside of the screen?
+   >
 '''
 
 from matplotlib.pylab import plt  # load plot library
