@@ -15,11 +15,11 @@ Requirements
    
 Questions:
 1. How would you define a barrier in your own words?
-   >
+   > A barrier is like a checkpoint where a specific number of threads have to catch up before they can proceed in their execution.
    >
 2. Why is a barrier necessary in this assignment?
-   >
-   >
+   > A barrier is necessary in this assignment because otherwise some manufacturers would put their sentinels before other manufacturers were finished
+   > and that would cause errors in the program since not all of the required cars were produced and sold.
 '''
 
 from datetime import datetime, timedelta
@@ -27,11 +27,62 @@ import time
 import threading
 import random
 
+import matplotlib.pyplot as plt
+
 # Global Constants
 MAX_QUEUE_SIZE = 10
 SLEEP_REDUCE_FACTOR = 50
 
 # NO GLOBAL VARIABLES!
+
+
+# THIS IS THE PLOTS CLASS FROM THE WEEK 4 ASSIGNMENT.
+# I MOVED IT HERE SO THAT YOU DIDN'T NEED TO IMPORT IT FROM ANOTHER FILE.
+class Plots:
+    """ Create plots for reports """
+
+    def __init__(self, title=''):
+        self._title = title
+
+    def line(self, xdata, ydata,
+             desc='', title='', x_label='', y_label='', show_plot=True, filename=''):
+        # fig, ax = plt.subplots()
+        plt.plot(xdata, ydata)
+
+        if title == '':
+            title = self._title
+
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
+        plt.title(title)
+        plt.grid()
+
+        # fig.savefig("test.png")
+        if filename != '':
+            plt.savefig(filename)
+
+        if show_plot:
+            plt.show()
+
+    def bar(self, xdata, ydata,
+            desc='', title='', x_label='', y_label='', show_plot=True, filename=''):
+
+        plt.bar(xdata, ydata)
+
+        if title == '':
+            title = self._title
+
+        plt.xlabel(x_label)
+        plt.ylabel(y_label)
+        plt.title(title)
+        plt.grid()
+
+        # fig.savefig("test.png")
+        if filename != '':
+            plt.savefig(filename)
+
+        if show_plot:
+            plt.show()
 
 
 class Car():
@@ -58,7 +109,7 @@ class Car():
         time.sleep(random.random() / (SLEEP_REDUCE_FACTOR))
 
         # Display the car that has was just created in the terminal
-        self.display()
+        # self.display()
 
     def display(self):
         print(f'{self.make} {self.model}, {self.year}')
@@ -86,28 +137,100 @@ class QueueTwoFiftyOne():
 class Manufacturer(threading.Thread):
     """ This is a manufacturer.  It will create cars and place them on the car queue """
 
-    def __init__(self):
+    def __init__(self, full_lot: threading.Semaphore, empty_lot: threading.Semaphore, car_queue, car_lock, barrier, sentinel, dealer_count):
+        # Call the superclass.
+        threading.Thread.__init__(self)
+
+        # Number of cars this manufacturer will produce.
         self.cars_to_produce = random.randint(200, 300)     # Don't change
 
+        # Esatblish the semaphores, queue, lock, barrier, sentinel, and dealer count.
+        self.sem_full_lot = full_lot
+        self.sem_empty_lot = empty_lot
+        self.car_queue = car_queue
+        self.car_lock = car_lock
+        self.barrier = barrier
+        self.sentinel = sentinel
+        self.dealer_count = dealer_count
+
     def run(self):
-        # TODO produce the cars, the send them to the dealerships
+        for i in range(self.cars_to_produce):
 
-        # TODO wait until all of the manufacturers are finished producing cars
+            # Create a new car object.
+            new_car = Car()
 
-        # TODO "Wake up/signal" the dealerships one more time.
-        # Select one manufacturer to do this (hint: pass in and use the manufacturer_id)
-        pass
+            # Acquire the semaphore.
+            self.sem_full_lot.acquire()
+
+            # Acquire the lock of the queue.
+            self.car_lock.acquire()
+
+            # Put the new car in the queue.
+            self.car_queue.put(new_car)
+
+            # Release the lock and semaphore and signal to the dealer that there are cars in the queue to be sold.
+            self.car_lock.release()
+            self.sem_empty_lot.release()
+
+        # Wait until all other manufacturers are finished.
+        self.barrier.wait()
+
+        # If this manufacturer is the sentinel, then signal to each dealer that no more cars are being made.
+        if self.sentinel:
+            for _ in range(self.dealer_count):
+                # Signal to the dealer that there are no more cars being made by putting a none object in the queue.
+                self.sem_full_lot.acquire()
+                self.car_lock.acquire()
+                self.car_queue.put(None)
+                self.car_lock.release()
+                self.sem_empty_lot.release()
 
 
 class Dealership(threading.Thread):
     """ This is a dealer that receives cars """
 
-    def __init__(self):
-        pass
+    def __init__(self, full_lot: threading.Semaphore, empty_lot: threading.Semaphore, car_queue, car_lock, barrier):
+        # Call the superclass.
+        threading.Thread.__init__(self)
+
+        # Esatblish the semaphores, queue, lock, barrier, stats, and queue stats.
+        self.sem_full_lot = full_lot
+        self.sem_empty_lot = empty_lot
+        self.car_queue = car_queue
+        self.car_lock = car_lock
+        self.stats = 0
+        self.barrier = barrier
+        self.queue_stats = [0] * MAX_QUEUE_SIZE
 
     def run(self):
         while True:
-            # TODO handle a car
+            # Acquire semaphore for the queue.
+            self.sem_empty_lot.acquire()
+
+            # Acquire lock for the queue.
+            self.car_lock.acquire()
+
+            # Get the size of the queue.
+            queue_size = len(self.car_queue.items)
+
+            # Get the next car from the queue.
+            current_car = self.car_queue.get()
+
+            # Release the lock from the queue.
+            self.car_lock.release()
+
+            # Release the semaphore of the queue so the manufacturer can start making cars again.
+            self.sem_full_lot.release()
+
+            # If the car is none then end the loop, else print the car that was sold and update stats.
+            if current_car == None:
+                break
+            else:
+                # Increment the statistic for the number of cars sold for the stats list, and the size of the queue in the queue_stats list.
+                self.stats += 1
+                self.queue_stats[queue_size-1] += 1
+
+                # print(f"SOLD {current_car.make} {current_car.model}, {current_car.year}")
 
             # Sleep a little - don't change.  This is the last line of the loop
             time.sleep(random.random() / (SLEEP_REDUCE_FACTOR))
@@ -121,25 +244,90 @@ def run_production(manufacturer_count, dealer_count):
     # Start a timer
     begin_time = time.perf_counter()
 
-    # TODO Create semaphore(s)
-    # TODO Create queue
-    # TODO Create lock(s)
-    # TODO Create barrier(s)
+    # Semaphores for controlling access to the queue.
+    full_lot = threading.Semaphore(MAX_QUEUE_SIZE)
+    empty_lot = threading.Semaphore(0)
 
-    # This is used to track the number of cars receives by each dealer
+    # Creating the car queue object.
+    car_queue = QueueTwoFiftyOne()
+
+    # Creating a lock for the queue.
+    car_lock = threading.Lock()
+
+    # Creating barriers for manufacturer and dealer threads.
+    m_barrier = threading.Barrier(manufacturer_count)
+    d_barrier = threading.Barrier(dealer_count)
+
+    # Creating lists for collecting stats for manufacturers and dealers.
     dealer_stats = list([0] * dealer_count)
+    manufacturer_stats = list([0] * manufacturer_count)
 
-    # TODO create your manufacturers, each manufacturer will create CARS_TO_CREATE_PER_MANUFACTURER
+    # List of manufacturers (objects).
+    manufacturers = []
 
-    # TODO create your dealerships
+    # Creating each manufacturer.
+    for i in range(0, manufacturer_count):
+        # The first manufacturer will be the sentinel--it is responsible for waking all of the dealers once all roduction has finished.
+        if i == 0:
+            new_manufacturer = Manufacturer(
+                full_lot, empty_lot, car_queue, car_lock, m_barrier, True, dealer_count)
+        else:
+            # Otherwise just create a regular manufacturer.
+            new_manufacturer = Manufacturer(
+                full_lot, empty_lot, car_queue, car_lock, m_barrier, False, dealer_count)
 
-    # TODO Start all dealerships
+        # Add the new manufacturer to the list.
+        manufacturers.append(new_manufacturer)
 
-    # TODO Start all manufacturers
+    # List of dealers (objects).
+    dealers = []
 
-    # TODO Wait for manufacturers and dealerships to complete
+    # Creating each dealer.
+    for i in range(dealer_count):
+        new_dealer = Dealership(full_lot, empty_lot,
+                                car_queue, car_lock, d_barrier)
+        # Add the new dealer to the list.
+        dealers.append(new_dealer)
+
+    # Starting each manufacturer thread.
+    for m in manufacturers:
+        m.start()
+
+    # Starting each dealer thread.
+    for d in dealers:
+        d.start()
+
+    # Joining all manufacturers and waiting for them to finish.
+    for m in manufacturers:
+        m.join()
+
+    # Joining all dealers and waiting for the to finish.
+    for d in dealers:
+        d.join()
 
     run_time = time.perf_counter() - begin_time
+
+    # Getting the cars made by each manufacturer for the manufacturer stats list.
+    for i in range(0, len(manufacturers)):
+        manufacturer_stats[i] = manufacturers[i].cars_to_produce
+
+    # Getting the cars sold by each dealer for the dealer stats list.
+    for i in range(0, len(dealers)):
+        dealer_stats[i] = dealers[i].stats
+
+    # Creating a list for the stats of the queue size during the production run.
+    queue_stats = [0] * MAX_QUEUE_SIZE
+
+    # Summing the queue stats for each dealer during production into the main queue_stats list.
+    for dealer in dealers:
+        for i in range(0, MAX_QUEUE_SIZE):
+            queue_stats[i] += dealer.queue_stats[i]
+
+    # Plot car count vs queue size.
+    xaxis = [i for i in range(1, MAX_QUEUE_SIZE + 1)]
+    plot = Plots()
+    plot.bar(xaxis, queue_stats,
+             title=f'{sum(queue_stats)} Produced: Count VS Queue Size', x_label='Queue Size', y_label='Count')
 
     # This function must return the following - only change the variable names, if necessary.
     # manufacturer_stats: is a list of the number of cars produced by each manufacturer,
@@ -153,7 +341,7 @@ def main():
     # Use 1, 1 to get your code working like the previous assignment, then
     # try adding in different run amounts. You should be able to run the
     # full 7 run amounts.
-    #runs = [(1, 1)]
+    # runs = [(1, 1)]
     runs = [(1, 1), (1, 2), (2, 1), (2, 2), (2, 5), (5, 2), (10, 10)]
     for manufacturers, dealerships in runs:
         run_time, max_queue_size, dealer_stats, manufacturer_stats = run_production(
@@ -170,6 +358,12 @@ def main():
         # The number of cars produces needs to match the cars sold (this should pass)
         assert sum(dealer_stats) == sum(manufacturer_stats)
 
+    # End of program.
+    print("\nALL RUNS COMPLETED.\n")
+
 
 if __name__ == '__main__':
     main()
+
+
+# Assignment completed by Mark Vagil.
