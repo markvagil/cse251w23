@@ -20,29 +20,22 @@ On my computer, I have 8 CPU cores.  The const variable `CPU_COUNT` is set to 4 
 
 ## Assignment
 
-1. Download the [assignment05.py](assignment05.py) file.
-2. Review the instructions found in the Python file as well as the global constants.
-4. The function `run_production()` will be passed different number of manufacturers and dealerships that are to be created for a production run.
-5. You must not use the Python queue object for this assignment.  Use the provided queue class.
+1. Download the [assignment06.py](assignment06.py) file.
+2. Review the requirements and answer the questions at the top.
 
 ## Rubric
 
 Item | Proficient | Emerging | Beginning | Missing
 --- | --- | --- | --- | ---
-Runs without errors | 20 | 0 | 0 | 0
+Runs without errors | 35 | 0 | 0 | 0
 [Style](../../style.md) | 15 | 10 | 5 | 0
-Semaphore used to control queue size | 10 | 7 | 3 | 0
-Semaphore used to control reading empty queue | 10 | 7 | 3 | 0
-Queue size not used in IF statement | 5 | 5 | 5 | 0
-Cars produced equals cars bought (assert passes) | 20 | 15 | 10 | 0
-Sentinel correctly sent from manufacturer to dealership | 10 | 7 | 3 | 0
-Barrier correctly used to ensure sentinel not placed prematurely on queue | 10 | 7 | 3 | 0
+Plot produced | 20 | 0 | 0 | 0
+Code will produce 300 frames that can be converted into a final video | 30 | 0 | 0 | 0
 
 Assignments are not accepted late. Instead, you should submit what you have completed by the due date for partial credit.
 
-Assignments are individual and not team based.  Any assignments found to be  plagiarised will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
+Assignments are individual and not team based.  Any assignments found to be  plagiarized will be graded according to the `ACADEMIC HONESTY` section in the syllabus. The Assignment will be graded in broad categories as outlined in the syllabus:
 
 ## Submission
 
-When finished, upload your Python file to Canvas.
-
+When finished, upload your Python file and plot to Canvas. Don't upload the video---but make sure to answer the questions at the top of the assignment.

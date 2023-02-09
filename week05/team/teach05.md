@@ -8,7 +8,7 @@ Today's team activity will be using a queue.
 
 ## Assignment
 
-The file `urls.txt` contains a list of URLs for the program `server.py`.  You will need to run the server.py program for this team activity.  This is the same server used in the Star Wars assignment.  You will be creating a thread that will read this data file line by line and placing the URLs into a queue.  The other thread(s) will take URLs from the queue and request information using that URL.  Use the `request` module for Internet requests.
+The file `urls.txt` contains a list of URLs for the program `server.py`.  You will need to run the server.py program for this team activity.  This is the same server used in the Star Wars assignment.  You will be creating a thread that will read this data file line by line and placing the URLs into a queue.  The other thread(s) will take URLs from the queue and request information using that URL.  Use the `requests` module for Internet requests.
 
 [](team_graph.png)
 
