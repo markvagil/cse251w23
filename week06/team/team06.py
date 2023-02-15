@@ -8,13 +8,13 @@ from PIL import Image
 # number of CPUs on your computer
 CPU_COUNT = mp.cpu_count()
 
-# TODO Your final video needs to have 300 processed frames.  However, while you are 
+# TODO Your final video needs to have 300 processed frames.  However, while you are
 # testing your code, set this much lower
-FRAME_COUNT = 20
+FRAME_COUNT = 300
 
-RED   = 0
+RED = 0
 GREEN = 1
-BLUE  = 2
+BLUE = 2
 
 
 def create_new_frame(image_file, green_file, process_file):
@@ -29,8 +29,9 @@ def create_new_frame(image_file, green_file, process_file):
     # Make Numpy array
     np_img = np.array(green_img)
 
-    # Mask pixels 
-    mask = (np_img[:, :, BLUE] < 120) & (np_img[:, :, GREEN] > 120) & (np_img[:, :, RED] < 120)
+    # Mask pixels
+    mask = (np_img[:, :, BLUE] < 120) & (
+        np_img[:, :, GREEN] > 120) & (np_img[:, :, RED] < 120)
 
     # Create mask image
     mask_img = Image.fromarray((mask*255).astype(np.uint8))
@@ -40,7 +41,12 @@ def create_new_frame(image_file, green_file, process_file):
 
 
 # TODO add any functions you need here
+def process_frames(image_number):
+    image_file = rf'elephant/image{image_number:03d}.png'
+    green_file = rf'green/image{image_number:03d}.png'
+    process_file = rf'processed/image{image_number:03d}.png'
 
+    create_new_frame(image_file, green_file, process_file)
 
 
 if __name__ == '__main__':
@@ -48,13 +54,11 @@ if __name__ == '__main__':
 
     # TODO - the code currently is set to only process the 10th frame.
     # Modify the code to process all 300 frames using a process pool and map.
-    
-    image_number = 10
 
-    image_file = rf'elephant/image{image_number:03d}.png'
-    green_file = rf'green/image{image_number:03d}.png'
-    process_file = rf'processed/image{image_number:03d}.png'
+    inputs = list(range(1, FRAME_COUNT + 1))
 
-    create_new_frame(image_file, green_file, process_file)
-    
-    print(f'\nTime To process all images = {timeit.default_timer() - beginTime} sec')
+    with mp.Pool(CPU_COUNT) as p:
+        p.map(process_frames, inputs)
+
+    print(
+        f'\nTime To process all images = {timeit.default_timer() - beginTime} sec')

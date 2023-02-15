@@ -9,14 +9,14 @@ Requirements
 Questions:
 1. What is the relationship between the time to process versus the number of CPUs?
    Does there appear to be an asymptote? If so, what do you think the asymptote is?
-   >
-   >
+   > The graph is an exponential decay function so as the number of CPUs increases the time to process drastically decreases.
+   > There appears to be a horizontal asymptote to me which is about y = 12 seconds.
 2. Is this a CPU bound or IO bound problem? Why?
-   >
-   >
+   > This is a CPU bound problem, there is no input or output to deal with.
+   > The computer is strictly processing images and only relies on the CPU.
 3. Would threads work on this assignment? Why or why not? (guess if you need to) 
-   >
-   >
+   > I don't think threads would really help on this assignment because this is a CPU bound problem,
+   > and threads only improve performance in I/O bound problems.
 '''
 
 from matplotlib.pylab import plt  # load plot library
@@ -26,15 +26,15 @@ import timeit
 import multiprocessing as mp
 
 # 4 more than the number of cpu's on your computer
-CPU_COUNT = mp.cpu_count() + 4  
+CPU_COUNT = mp.cpu_count() + 4
 
-# TODO Your final video need to have 300 processed frames.  However, while you are 
+# TODO Your final video need to have 300 processed frames.  However, while you are
 # testing your code, set this much lower
-FRAME_COUNT = 20
+FRAME_COUNT = 300
 
-RED   = 0
+RED = 0
 GREEN = 1
-BLUE  = 2
+BLUE = 2
 
 
 def create_new_frame(image_file, green_file, process_file):
@@ -49,8 +49,9 @@ def create_new_frame(image_file, green_file, process_file):
     # Make Numpy array
     np_img = np.array(green_img)
 
-    # Mask pixels 
-    mask = (np_img[:, :, BLUE] < 120) & (np_img[:, :, GREEN] > 120) & (np_img[:, :, RED] < 120)
+    # Mask pixels
+    mask = (np_img[:, :, BLUE] < 120) & (
+        np_img[:, :, GREEN] > 120) & (np_img[:, :, RED] < 120)
 
     # Create mask image
     mask_img = Image.fromarray((mask*255).astype(np.uint8))
@@ -59,8 +60,14 @@ def create_new_frame(image_file, green_file, process_file):
     image_new.save(process_file)
 
 
-# TODO add any functions you need here
+# This process_frames function is the function that is called by the map function and will get the images and pass them to the
+# create_new_frame function so the combined image can be created.
+def process_frames(image_number):
+    image_file = rf'elephant/image{image_number:03d}.png'
+    green_file = rf'green/image{image_number:03d}.png'
+    process_file = rf'processed/image{image_number:03d}.png'
 
+    create_new_frame(image_file, green_file, process_file)
 
 
 if __name__ == '__main__':
@@ -71,22 +78,34 @@ if __name__ == '__main__':
     xaxis_cpus = []
     yaxis_times = []
 
-    # process the 10th frame (TODO modify this to loop over all frames)
-    image_number = 10
+    # List of integers for the number of each frame we need to process.
+    inputs = list(range(1, FRAME_COUNT + 1))
 
-    image_file = rf'elephant/image{image_number:03d}.png'
-    green_file = rf'green/image{image_number:03d}.png'
-    process_file = rf'processed/image{image_number:03d}.png'
+    # For loop that will start 1 cpu, then 2 cpus, and go all the way to CPU_COUNT (which is the number of cpus on the machine plus 4).
+    for count in range(1, CPU_COUNT + 1):
+        # Starts a timer for this iteration.
+        start_time = timeit.default_timer()
 
-    start_time = timeit.default_timer()
-    create_new_frame(image_file, green_file, process_file)
-    print(f'\nTime To Process all images = {timeit.default_timer() - start_time}')
+        # Starts the processing pool and calls the map function to process each frame.
+        with mp.Pool(count) as p:
+            p.map(process_frames, inputs)
 
-    print(f'Total Time for ALL processing: {timeit.default_timer() - all_process_time}')
+        # Prints the number of CPU cores used and the time taken to process all images.
+        print(f'\n\nProcessed with {count} CPU cores.')
+        time_taken = timeit.default_timer() - start_time
+        print(
+            f'Time To Process all images = {time_taken} seconds')
+
+        # Appending the data to the lists for the graph.
+        xaxis_cpus.append(count)
+        yaxis_times.append(time_taken)
+
+    print(
+        f'Total Time for ALL processing: {timeit.default_timer() - all_process_time} seconds')
 
     # create plot of results and also save it to a PNG file
     plt.plot(xaxis_cpus, yaxis_times, label=f'{FRAME_COUNT}')
-    
+
     plt.title('CPU Core yaxis_times VS CPUs')
     plt.xlabel('CPU Cores')
     plt.ylabel('Seconds')
