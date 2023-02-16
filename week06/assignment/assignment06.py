@@ -17,6 +17,9 @@ Questions:
 3. Would threads work on this assignment? Why or why not? (guess if you need to) 
    > I don't think threads would really help on this assignment because this is a CPU bound problem,
    > and threads only improve performance in I/O bound problems.
+4. When you run "create_final_video.py", does it produce a video with the elephants
+   inside of the screen?
+   > Yes.
 '''
 
 from matplotlib.pylab import plt  # load plot library
