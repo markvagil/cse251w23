@@ -63,11 +63,6 @@ def is_sorted(arr):
 
 
 # -----------------------------------------------------------------------------
-def merge_normal(arr):
-    merge_sort(arr)
-
-
-# -----------------------------------------------------------------------------
 def merge_sort_thread(arr):
     # TODO - Add your code here to use threads.  Each time the merge algorithm does a recursive
     #        call, you need to create a thread to handle that call
