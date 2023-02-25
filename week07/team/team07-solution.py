@@ -34,9 +34,25 @@ def is_prime(n: int) -> bool:
         i += 6
     return True
 
-# TODO create read_thread function
 
-# TODO create prime_process function
+def open_file(filename, queue, cpu_count):
+    with open(filename) as f:
+        for line in f:
+            queue.put(int(line.strip()))
+        for i in range(1, cpu_count+1):
+            queue.put(None)
+    print('read all of file')
+
+
+def process_numbers(i, numbers, queue):
+    while True:
+
+        number = queue.get()
+        if number == None:
+            break
+        elif is_prime(number):
+            numbers[i] += 1
+        print('processed ', number)
 
 
 def main():
@@ -51,20 +67,37 @@ def main():
     cpu_count = mp.cpu_count()
 
     # TODO Create shared data structures
+    queue = mp.Queue()
+    numbers = mp.Manager().list([0] * cpu_count)
 
     # TODO create reading thread
+    t = threading.Thread(target=open_file, args=(filename, queue, cpu_count))
+
+    # TODO Start them all
+    t.start()
+
+    # TODO wait for them to complete
+    t.join()
 
     # TODO create prime processes
 
-    # TODO Start them all
+    processes = [mp.Process(target=process_numbers, args=(
+        i, numbers, queue)) for i in range(cpu_count)]
 
-    # TODO wait for them to complete
+    for i in range(cpu_count):
+        processes[i].start()
+
+    for i in range(cpu_count):
+        processes[i].join()
+
+    primes = list(numbers)
+    print(sum(primes))
 
     total_time = "{:.2f}".format(time.perf_counter() - begin_time)
     print(f'Total time = {total_time} sec')
 
     # Assert the correct amount of primes were found.
-    assert len(primes) == 321, "You should find exactly 321 prime numbers"
+    assert sum(primes) == 321, "You should find exactly 321 prime numbers"
 
 
 if __name__ == '__main__':

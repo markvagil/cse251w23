@@ -58,16 +58,75 @@ def get_color():
     return color
 
 
-def solve_find_end(maze):
+def solve_find_end(maze, current_position, current_color, thread_count_lock):
     """ finds the end position using threads.  Nothing is returned """
     # When one of the threads finds the end position, stop all of them
     # TODO - add code here
-    pass
+
+    global stop
+    global thread_count
+
+    thread_count_lock.acquire()
+    thread_count += 1
+    thread_count_lock.release()
+
+    not_at_end = True
+
+    while not_at_end:
+        # Move to the position we were given
+        # print(f"color {current_color} is moving to {current_position}")
+        if maze.can_move_here(current_position[0], current_position[1]):
+            maze.move(current_position[0], current_position[1], current_color)
+
+        if stop == True:
+            return
+
+        # Check if the position we moved to is the end position.
+        if maze.at_end(current_position[0], current_position[1]):
+            not_at_end = False  # false because we are at the end
+            break
+            # we need to stop all other threads
+
+        else:
+            # Get the possible moves from our current position.
+            p_moves = maze.get_possible_moves(
+                current_position[0], current_position[1])
+
+            current_thread_move = ''
+
+            if len(p_moves) == 0:  # If no possible moves
+                print(f"Thread {current_color} returned.")
+                return
+
+            else:
+                # position tuple assigned for this current thread
+                current_thread_move = p_moves[0]
+
+                if len(p_moves) > 1:  # If possible moves is greater than 1.
+                    p_moves.pop(0)
+
+                    for new_position in p_moves:  # For every possible move.
+                        # If we can move to the new position.
+                        if maze.can_move_here(new_position[0], new_position[1]):
+                            new_thread = threading.Thread(
+                                target=solve_find_end, args=(maze, new_position, get_color(), thread_count_lock,))
+                            new_thread.start()
+
+                if len(p_moves) == 1:
+                    if maze.can_move_here(current_thread_move[0], current_thread_move[1]):
+                        current_position = current_thread_move
+
+    # happens after the while loop breaks
+    stop = True
+    print(f"End position found: {current_position}")
 
 
 def find_end(filename, delay):
 
     global thread_count
+    global stop
+    stop = False
+    thread_count = 0
 
     # create a Screen Object that will contain all of the drawing commands
     screen = Screen(SCREEN_SIZE, SCREEN_SIZE)
@@ -75,7 +134,12 @@ def find_end(filename, delay):
 
     maze = Maze(screen, SCREEN_SIZE, SCREEN_SIZE, filename, delay=delay)
 
-    solve_find_end(maze)
+    thread_count_lock = threading.Lock()
+    #              maze      start position      new color      threading lock
+    main_thread = threading.Thread(target=solve_find_end, args=(
+        maze, maze.get_start_pos(), get_color(), thread_count_lock,))
+    main_thread.start()
+    main_thread.join()
 
     print(f'Number of drawing commands = {screen.get_command_count()}')
     print(f'Number of threads created  = {thread_count}')
