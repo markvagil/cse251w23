@@ -1,0 +1,1 @@
+1. https://stackoverflow.com/questions/748175/asynchronous-vs-synchronous-execution-what-is-the-difference
