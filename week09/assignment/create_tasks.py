@@ -72,6 +72,8 @@ def write_dict(file_count, dictionary):
     global files_created
     files_created += 1
     print(f'Saving {get_filename(file_count)}')
+    if(not os.path.exists('tasks')):
+        os.makedirs('tasks')
     with open(get_filename(file_count), 'w') as f:
         f.write(json.dumps(dictionary, indent=2))
 
