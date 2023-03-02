@@ -1,0 +1,73 @@
+Log File for Week 8 Assignment - Mark Vagil
+
+****************************************
+Part 1
+
+File: verysmall.bmp
+Number of drawing commands for = 88
+Found path has length          = 10
+
+File: verysmall-loops.bmp
+Number of drawing commands for = 248
+Found path has length          = 38
+
+File: small.bmp
+Number of drawing commands for = 1768
+Found path has length          = 78
+
+File: small-loops.bmp
+Number of drawing commands for = 2332
+Found path has length          = 154
+
+File: small-odd.bmp
+Number of drawing commands for = 2600
+Found path has length          = 88
+
+File: small-open.bmp
+Number of drawing commands for = 2940
+Found path has length          = 354
+
+File: large.bmp
+Number of drawing commands for = 28992
+Found path has length          = 1298
+
+File: large-loops.bmp
+Number of drawing commands for = 40536
+Found path has length          = 1006
+****************************************
+
+****************************************
+Part 2
+
+File: verysmall.bmp
+Number of drawing commands = 88
+Number of threads created  = 3
+
+File: verysmall-loops.bmp
+Number of drawing commands = 322
+Number of threads created  = 7
+
+File: small.bmp
+Number of drawing commands = 1664
+Number of threads created  = 20
+
+File: small-loops.bmp
+Number of drawing commands = 2026
+Number of threads created  = 31
+
+File: small-odd.bmp
+Number of drawing commands = 2194
+Number of threads created  = 152
+
+File: small-open.bmp
+Number of drawing commands = 2548
+Number of threads created  = 235
+
+File: large.bmp
+Number of drawing commands = 31030
+Number of threads created  = 359
+
+File: large-loops.bmp
+Number of drawing commands = 32938
+Number of threads created  = 537
+****************************************

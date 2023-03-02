@@ -13,8 +13,6 @@ SCREEN_SIZE = 800
 COLOR = (0, 0, 255)
 
 
-# TODO add any functions
-
 def solve(maze: Maze, current_position, solution_path: list):
     """ Solve the maze. The path object should be a list (x, y) of the positions 
         that solves the maze, from the start position to the end position. """
