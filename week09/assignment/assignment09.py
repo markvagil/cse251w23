@@ -8,24 +8,30 @@ Requirements
    
 Questions:
 1. How many processes did you specify for each pool:
-   >Finding primes:
-   >Finding words in a file:
-   >Changing text to uppercase:
-   >Finding the sum of numbers:
-   >Web request to get names of Star Wars people:
+   >Finding primes: 2
+   >Finding words in a file: 1
+   >Changing text to uppercase: 2
+   >Finding the sum of numbers: 1
+   >Web request to get names of Star Wars people: 34
    
-   >How do you determine these numbers:
+   How do you determine these numbers: 
+   > For the CPU bound problems, through lots of trial and error I eventually found that since the primes and
+   > the uppercase tasks have separate function calls, it seems like they benefit from having a pool size of 2,
+   > and the word finder and sum tasks actually slowed down when the pool size increased. It feels strange but
+   > the runtimes don't lie. Having large pool sizes only slowed down run times.
+   > For the IO bound problem it is useful to use as many processes as their are API calls which is 34, 
+   > and at that pool size I get the best performance.
    
 2. Specify whether each of the tasks is IO Bound or CPU Bound?
-   >Finding primes:
-   >Finding words in a file:
-   >Changing text to uppercase:
-   >Finding the sum of numbers:
-   >Web request to get names of Star Wars people:
+   >Finding primes: CPU
+   >Finding words in a file: CPU
+   >Changing text to uppercase: CPU
+   >Finding the sum of numbers: CPU
+   >Web request to get names of Star Wars people: IO
    
 3. What was your overall time, with:
-   >one process in each of your five pools:  ___ seconds
-   >with the number of processes you show in question one:  ___ seconds
+   >one process in each of your five pools: 34.87 seconds
+   >with the number of processes you show in question one: 4.3 seconds
 '''
 
 import glob
@@ -53,6 +59,7 @@ result_sums = []
 result_names = []
 
 
+# The is_prime function checks if an integer is prime or not.
 def is_prime(n: int):
     """Primality test using 6k+-1 optimization.
     From: https://en.wikipedia.org/wiki/Primality_test
@@ -69,6 +76,7 @@ def is_prime(n: int):
     return True
 
 
+# Prime task function, takes in an integer.
 def task_prime(value):
     """
     Use the is_prime() above
@@ -77,9 +85,22 @@ def task_prime(value):
             - or -
         {value} is not prime
     """
-    pass
+
+    # Calls is_prime to check the primality of the value, and returns a string.
+    if is_prime(value):
+        return (f'{value} is prime')
+    else:
+        return (f'{value} is not prime')
 
 
+# Prime task callback function.
+def callback_prime(result):
+    # Appending result to the global list.
+    global result_primes
+    result_primes.append(result)
+
+
+# Word task function, takes in a word.
 def task_word(word):
     """
     search in file 'words.txt'
@@ -88,25 +109,59 @@ def task_word(word):
             - or -
         {word} not found *****
     """
-    pass
+    # Opens the data.txt file and checks if the word is in the file and returns a string.
+    with open('data.txt', 'r') as file:
+        content = file.read()
+        if word in content:
+            return (f'{word} Found')
+        else:
+            return (f'{word} not found *****')
 
 
+# Word task callback function.
+def callback_words(result):
+    # Appending result to the global list.
+    global result_words
+    result_words.append(result)
+
+
+# Upper task function, takes in a string.
 def task_upper(text):
     """
     Add the following to the global list:
         {text} ==>  uppercase version of {text}
     """
-    pass
+    # Return the formatted string with the uppercase version of the text.
+    return (f'{text} ==> uppercase version of {text.upper()}')
 
 
+# Upper task callback function.
+def callback_upper(result):
+    # Appending result to the global list.
+    global result_upper
+    result_upper.append(result)
+
+
+# Sum task function, takes in a start and end value.
 def task_sum(start_value, end_value):
     """
     Add the following to the global list:
         sum of {start_value:,} to {end_value:,} = {total:,}
     """
-    pass
+    # Sum of the start and end values.
+    sum = start_value + end_value
+    # Return the formatted string.
+    return (f'sum of {start_value:,} to {end_value:,} = {sum:,}')
 
 
+# Sum task callback function.
+def callback_sum(result):
+    # Appending result to the global list.
+    global result_sums
+    result_sums.append(result)
+
+
+# Name task function, takes in a URL.
 def task_name(url):
     """
     use requests module
@@ -115,9 +170,28 @@ def task_name(url):
             - or -
         {url} had an error receiving the information
     """
-    pass
+    # Getting the web request from the star wars server.
+    response = requests.get(url)
+
+    # Status request validation
+    if response.status_code == 200:
+        # Getting the JSON data.
+        data = response.json()
+        # Return the URL and the character's name.
+        return f'{url} has name {data["name"]}'
+    else:
+        # If there is a bad URL or server response.
+        return (f'{url} has an error receiving the information')
 
 
+# Name task callback function.
+def callback_name(result):
+    # Appending result to the global list.
+    global result_names
+    result_names.append(result)
+
+
+# Load JSON file function to get the data from the task file.
 def load_json_file(filename):
     if os.path.exists(filename):
         with open(filename) as json_file:
@@ -130,35 +204,63 @@ def load_json_file(filename):
 def main():
     begin_time = time.time()
 
-    # TODO Create process pools
+    # Creating each process pool.
+    # I have 20 logical processors on my computer just as a note, my CPU is a intel i9-12900H
 
-    # The below code is test code to show you the logic of what you are supposed to do.
-    # Remove it and replace with using process pools with apply_async calls.
-    # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    prime_pool = mp.Pool(2)  # Runs fastest with 2 CPUs
+    word_pool = mp.Pool(1)  # Runs fastest with 1 CPU
+    upper_pool = mp.Pool(2)  # Runs fastest with 2 CPUs
+    sum_pool = mp.Pool(1)  # Runs fastest with 1 CPU
+
+    # Since the name task is I/O bound, I increase the pool size to the number of names (API calls).
+    name_pool = mp.Pool(34)  # Runs best at 34 CPUs
+
+    # Storing each pool in a list.
+    pools_list = [prime_pool, word_pool, upper_pool, sum_pool, name_pool]
+
+    # Count variable, and task files folder variable.
     count = 0
     task_files = glob.glob("tasks/*.task")
+
+    # Iterate through each file in the tasks folder.
     for filename in task_files:
-        # print()
-        # print(filename)
+        # Loading the json data from the task file.
         task = load_json_file(filename)
-        print(task)
+        # Updating the count of tasks.
         count += 1
+        # Saving the task type as a variable.
         task_type = task['task']
+
+        # Checking which task type we have and then running it.
         if task_type == TYPE_PRIME:
-            task_prime(task['value'])
+            # Prime pool task.
+            prime_pool.apply_async(task_prime, args=(
+                task['value'],), callback=callback_prime)
         elif task_type == TYPE_WORD:
-            task_word(task['word'])
+            # Word pool task.
+            word_pool.apply_async(task_word, args=(
+                task['word'],), callback=callback_words)
         elif task_type == TYPE_UPPER:
-            task_upper(task['text'])
+            # Uppercase pool task.
+            upper_pool.apply_async(task_upper, args=(
+                task['text'],), callback=callback_upper)
         elif task_type == TYPE_SUM:
-            task_sum(task['start'], task['end'])
+            # Sum pool task.
+            sum_pool.apply_async(task_sum, args=(
+                task['start'], task['end']), callback=callback_sum)
         elif task_type == TYPE_NAME:
-            task_name(task['url'])
+            # Names pool task.
+            name_pool.apply_async(task_name, args=(
+                task['url'],), callback=callback_name)
         else:
             print(f'Error: unknown task type {task_type}')
-    # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-    # TODO start pools and block until they are done before trying to print
+    # Starting each pool and blocking until they are done before printing anything.
+    for pool in pools_list:
+        pool.close()
+        pool.join()
+
+    # Printing all results.
 
     def print_list(lst):
         for item in lst:
