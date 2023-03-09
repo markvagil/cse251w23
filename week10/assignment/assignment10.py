@@ -64,27 +64,39 @@ EATING_DELAY = 1
 THINKING_DELAY = 1
 
 
+# TODO - create the waiter (A class would be best here).
+class Waiter(threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self.forks = [threading.Lock() for _ in range(PHILOSOPHERS)]
+        pass
+
+    # def run(self):
+    #     pass
+
+    def take_forks(self):
+        pass
+
+    def release_forks(self):
+        pass
+
+
 def main():
-    # TODO - create the waiter (A class would be best here).
-    class Waiter(threading.Thread):
-        def __init__(self):
+
+    # TODO - create PHILOSOPHERS philosophers.
+    class Philosopher(threading.Thread):
+        def __init__(self, id):
             super().__init__()
+            self.ph_id = id
+            self.meals_eaten = 0
             pass
 
         def run(self):
             pass
 
-    # TODO - create the forks (What kind of object should a fork be?).
-
-    class Fork:
-        def __init__(self):
-            pass
-
-    # TODO - create PHILOSOPHERS philosophers.
-
-    # TODO - Start them eating and thinking.
-    # TODO - Display how many times each philosopher ate,
-    #        how long they spent eating, and how long they spent thinking.
+        # TODO - Start them eating and thinking.
+        # TODO - Display how many times each philosopher ate,
+        #        how long they spent eating, and how long they spent thinking.
 
 
 if __name__ == '__main__':
