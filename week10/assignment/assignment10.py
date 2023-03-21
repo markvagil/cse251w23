@@ -57,59 +57,49 @@ Instructions:
 
 import time
 import threading
+import random
 
 PHILOSOPHERS = 5
 MAX_MEALS = PHILOSOPHERS * 5
-EATING_DELAY = 3
-THINKING_DELAY = 1
 
 
-# TODO - create the waiter (A class would be best here).
+# Waiter class, controls the eating of the philosophers.
 class Waiter():
     def __init__(self):
-        self.total_meals = 0
+        # Initialize a list of forks (locks).
         self.forks = [threading.Lock() for _ in range(PHILOSOPHERS)]
 
-    """def can_eat(self, philosopher_id):
-        if self.forks[philosopher_id].locked() == False and self.forks[(philosopher_id + 1) % 5].locked() == False:
-            # If both forks are not locked
-            return True
-        else:
-            return False"""
-
+    # Can_eat() checks if a philosopher can pick up both forks and eat.
     def can_eat(self, philosopher_id):
         if self.forks[philosopher_id].locked() == False and self.forks[(philosopher_id + 1) % 5].locked() == False:
-            # If both forks are not locked
+            # Return true if both forks are not locked.
             return True
         else:
             return False
 
     def take_forks(self, philosopher_id):
-        print(
-            f"PH: {philosopher_id} is taking forks {philosopher_id} and {(philosopher_id + 1) % 5}")
+        # From philosopher perspective, acquire right fork.
         self.forks[philosopher_id].acquire()
+        # From philosopher perspective, acquire left fork.
         self.forks[(philosopher_id + 1) % 5].acquire()
 
     def release_forks(self, philosopher_id):
-        print(
-            f"PH: {philosopher_id} is releasing forks {philosopher_id} and {(philosopher_id + 1) % 5}")
+        # Release both forks for this philosopher.
         self.forks[philosopher_id].release()
         self.forks[(philosopher_id + 1) % 5].release()
 
-    def update_total_meals(self):
-        self.total_meals += 1
-
-    def get_total_meals(self):
-        return self.total_meals
-
-    def get_forks(self):
-        output = f"\n[Fork 0: {self.forks[0].locked()}, Fork 1: {self.forks[1].locked()}, Fork 2: {self.forks[2].locked()}, Fork 3: {self.forks[3].locked()}, Fork 4: {self.forks[4].locked()}]\n"
+    '''
+    # DEBUGGING FUNCTION
+    def get_forks(self, ph_id):
+        output = f"PH:{ph_id} -- [F-0: {self.forks[0].locked()}, F-1: {self.forks[1].locked()}, F-2: {self.forks[2].locked()}, F-3: {self.forks[3].locked()}, F-4: {self.forks[4].locked()}]\n"
         print(output)
+    '''
 
 
-# TODO - create PHILOSOPHERS philosophers.
+# Philosopher threading class.
 class Philosopher(threading.Thread):
     def __init__(self, id, waiter):
+        # Initiate the threading class, philosopher id, the waiter, number of meals eaten, time spent eating, and time spent thinking.
         super().__init__()
         self.ph_id = id
         self.waiter = waiter
@@ -121,63 +111,67 @@ class Philosopher(threading.Thread):
         keep_going = True
 
         while keep_going:
-            # Check if we are done
-            if self.check_if_done():
-                keep_going = False
-                break
-
-            # If we can eat, then eat
+            # If we can eat, then eat.
             if self.waiter.can_eat(self.ph_id):
-                print(f"Philosopher {self.ph_id} is eating.")
+                print(f"Philosopher {self.ph_id} IS EATING")
+
+                # Lock the forks we need so we can eat.
                 self.waiter.take_forks(self.ph_id)
-                self.waiter.get_forks()
+
+                # Increment the number of meals eaten.
                 self.meals_eaten += 1
-                self.time_eating += 1
-                time.sleep(EATING_DELAY)
+
+                # Sleep between 1 to 3 seconds to eat.
+                eating_time = random.choice([1, 2, 3])
+                time.sleep(eating_time)
+
+                # Update the time spent eating.
+                self.time_eating += eating_time
+
+                # Unlock the forks we don't need anymore since we are done eating.
                 self.waiter.release_forks(self.ph_id)
-                self.waiter.update_total_meals()
 
-            # Check if we are done
-            if self.check_if_done():
+            # Check if we have consumed our fair share of meals.
+            if self.meals_eaten >= MAX_MEALS / PHILOSOPHERS:
+                # If we have, then break.
                 keep_going = False
                 break
+            else:
+                # Otherwise, do some thinking.
+                print(f"Philosopher {self.ph_id} IS THINKING")
 
-            # Now do some thinking
-            # print(f"Philosopher {self.ph_id} is thinking.")
-            self.time_thinking += 1
-            time.sleep(THINKING_DELAY)
+                # Sleep between 1 to 3 seconds to think.
+                thinking_time = random.choice([1, 2, 3])
+                time.sleep(thinking_time)
 
-            # Check if we are done
-            if self.check_if_done():
-                keep_going = False
-                break
+                # Update the time spent thinking.
+                self.time_thinking += 1
 
+    # Function that returns a string of the statistics from this philosopher.
     def get_stats(self):
         return f"Philosopher {self.ph_id} - MEALS EATEN: {self.meals_eaten} - eating: {self.time_eating} sec - thinking: {self.time_thinking} sec"
 
-    def check_if_done(self):
-        if self.waiter.get_total_meals() >= MAX_MEALS:
-            return True
-
 
 def main():
+    # Start the timer.
     start_time = time.time()
 
+    # Create the waiter.
     waiter = Waiter()
 
-    # Creating a list of philosophers with a numeric id
+    # Creating a list that will hold the philosophers with a numeric id.
     ph_list = []
 
+    # Create each philosopher thread and add them to the list.
     for i in range(PHILOSOPHERS):
         new_ph = Philosopher(i, waiter)
         ph_list.append(new_ph)
 
-    # TODO - Start them eating and thinking.
+    # Start the philosophers eating and thinking and join them.
     [ph.start() for ph in ph_list]
     [ph.join() for ph in ph_list]
 
-    # TODO - Display how many times each philosopher ate,
-    #        how long they spent eating, and how long they spent thinking.
+    # Display the total runtime of the program, and how many times each philosopher ate, and how long they were eating and thinking for.
     print(f"\nTotal runtime: {time.time() - start_time}\n")
     [print(ph.get_stats()) for ph in ph_list]
 
